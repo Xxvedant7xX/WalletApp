@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:walletapp/util/my_button.dart';
 import 'package:walletapp/util/my_card.dart';
+import 'package:walletapp/util/my_list_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +21,38 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.pink[400],
+        child: Icon(Icons.currency_rupee_outlined,
+        size: 32,
+        color: Colors.white,),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.grey[200],
+        child: Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+            IconButton(
+              onPressed: () {},
+               icon: Icon(Icons.home,
+               size: 32,
+               ),
+               ),
+               SizedBox(width: 140,),
+               IconButton(
+              onPressed: () {},
+               icon: Icon(Icons.settings,
+               size: 32,
+               ),
+            ),
+          ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -56,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                 ),
             ),
 
-            SizedBox(height: 25),
+            SizedBox(height: 30),
 
             //cards
             Container(
@@ -90,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-             SizedBox(height: 25),
+             SizedBox(height: 35),
 
             SmoothPageIndicator(
               controller: _controller,
@@ -100,22 +134,55 @@ class _HomePageState extends State<HomePage> {
                ),
                ),
 
-              SizedBox(height: 25),
+              SizedBox(height: 20),
 
             // 3 buttons => send , pay, bill
 
-            Row(children: [
-            // send button
-
-            //pay button
-
-            //bill button
-            ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+              // send button
+              MyButton(
+                IconImagePath: 'lib/icons/send-money.png',
+                buttonText: 'Send'),
+              //pay button
+               MyButton(
+                IconImagePath: 'lib/icons/credit-card.png',
+                buttonText: 'Pay'),
+              
+              //bill button
+               MyButton(
+                IconImagePath: 'lib/icons/bill.png',
+                buttonText: 'Bills'),
+              
+              ],
+              ),
             ),
 
-        
+            SizedBox(height: 25),
+
             // column => stats + transactions
-            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Column(
+                children: [
+                  //statistics
+                  MyListTile(
+                    iconImagePath: 'lib/icons/statistics.png',
+                     tiletitle: 'Statistics',
+                      tileSubtitle: 'Payment and Income',
+                      ),
+                  //transactions
+                  MyListTile(
+                    iconImagePath: 'lib/icons/cash-flow.png',
+                     tiletitle: 'Transactions',
+                      tileSubtitle: 'Transactions History',
+                      ),
+              ],
+              ),
+            ),
           ],
           ),
       ),

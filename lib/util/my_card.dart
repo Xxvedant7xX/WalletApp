@@ -32,22 +32,32 @@ class MyCard extends StatelessWidget {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-      
-                  SizedBox(height: 10),
-      
-                    Text('Balance',
-                    style: TextStyle(
-                      color: Colors.white
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Balance',
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                        ),
+                        Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(height: 10),
+                      Image.asset('lib/icons/visa-logo.png',
+                      height: 50,
+                      ),
+                    ],
+                  ),
+                      ],
                     ),
-                    ),
-      
-                    SizedBox(height: 10),
-      
                     Text('\₹' + balance.toString(),
                      style: TextStyle(
                       color: Colors.white,
-                      fontSize: 28,
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
                     ),
                     ),
       
